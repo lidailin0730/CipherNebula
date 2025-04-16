@@ -1,0 +1,106 @@
+[package]
+name = "zkhash"
+version = "0.2.0"
+authors = ["Markus Schofnegger <mschofnegger@horizenlabs.io>", "Roman Walch <roman.walch@iaik.tugraz.at>"]
+description = "Rust implementations of Poseidon2 and similar arithmetization-oriented primitives"
+edition = "2018"
+
+[dependencies]
+ark-ff = { version = "^0.4.0", default-features = false }
+ark-std = { version = "^0.4.0", default-features = false }
+hex = "0.4"
+serde = "1.0"
+lazy_static = "1.4"
+cfg-if = "1.0"
+sha3 = "0.10"
+sha2 = "0.10"
+blake2 = "0.10"
+# for sinsemilla:
+group = "0.13"
+halo2 = "=0.1.0-beta.2"
+pasta_curves = "0.5"
+subtle = "2.3"
+random = {package = "rand", version = "0.8"}
+# for pederson_hash:
+group_ped = { package = "group", version = "0.12.1", features = ["wnaf-memuse"] }
+bitvec = "1.0"
+byteorder = "1.4"
+jubjub = "0.9"
+bls12_381 = "0.7"
+
+[dev-dependencies]
+criterion = "0.4"
+
+[features]
+default = []
+asm = ["sha2/asm", "blake2/simd_asm", "ark-ff/asm"]
+
+[[bench]]
+name = "mt_bls12"
+harness = false
+
+[[bench]]
+name = "mt_bn256"
+harness = false
+
+[[bench]]
+name = "plain_babybear"
+harness = false
+
+[[bench]]
+name = "plain_goldilocks"
+harness = false
+
+[[bench]]
+name = "plain_bn256"
+harness = false
+
+[[bench]]
+name = "plain_bls12"
+harness = false
+
+[[bench]]
+name = "plain_pallas"
+harness = false
+
+[[bench]]
+name = "plain_vesta"
+harness = false
+
+[profile.release]
+# Enable link-time optimization, eliminates more code and inlines across crate boundaries.
+# Default: false
+lto = true
+
+# codegen-units of 1 gives best optimization, but disables parallel building.
+# Default: 16
+codegen-units = 1
+
+# Includes debug information in release builds. Necessary for profiling. Does not
+# slow down the executable.
+debug = true
+
+# The default optimization level is 3 for release mode builds.
+# 0 means disable optimization and is the default for debug mode buids.
+# (Setting opt-level=1 for debug builds is a good way of speeding them up a bit.)
+# "s" means optimize for size, "z" reduces size even more.
+opt-level = 3
+
+[profile.bench]
+# Enable link-time optimization, eliminates more code and inlines across crate boundaries.
+# Default: false
+lto = true
+
+# codegen-units of 1 gives best optimization, but disables parallel building.
+# Default: 16
+codegen-units = 1
+
+# Includes debug information in release builds. Necessary for profiling. Does not
+# slow down the executable.
+debug = true
+
+# The default optimization level is 3 for release mode builds.
+# 0 means disable optimization and is the default for debug mode buids.
+# (Setting opt-level=1 for debug builds is a good way of speeding them up a bit.)
+# "s" means optimize for size, "z" reduces size even more.
+opt-level = 3
