@@ -122,19 +122,6 @@ int main() {
 Released under the **MIT License**, allowing commercial use, modification, and distribution. See [LICENSE](https://github.com/lidailin0730/CipherNebula/blob/main/LICENSE) for details.  
 
 
-## 🔬 Citing CipherNebula  
-If used in academic research, please cite our [whitepaper](https://arxiv.org/abs/2310.XXXX):  
-```bibtex  
-@article{chen2023ciphernebula,  
-  title={CipherNebula: A Modular Framework for Post-Quantum Zero-Knowledge Proofs},  
-  author={Chen, Lidai and Wang, Wei},  
-  journal={Cryptology ePrint Archive, Report 2023/1234},  
-  year={2023}  
-}  
-```
-
-
-
 #### Module-Specific Compilation Guides  
 
 ##### 1. **Proof Generation & Verification (Example Workflow)**  
